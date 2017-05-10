@@ -1,0 +1,155 @@
+@font-face {
+    font-family: basicFont;
+    src: url(Fonts/Quicksand_Book.otf);
+}
+*{
+	margin: 0;
+    font-family: basicFont,Monospace,sans-serif;
+	font-size: 15px;
+}
+a, a:hover, a:focus{
+   text-decoration: none; 
+}
+.topMenu{
+    float: right;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+.siteLogo{
+	margin-top: 45px;
+	margin-left: 30px;
+}
+.siteTitle{
+    height: 130px;
+    display: block;
+    text-align: center;
+}
+.teaWallpaper{
+    background: url(Images/Tea_Loose.jpg);
+    background-repeat: round;
+    display: block;
+    height: 210px;
+    width: 100%;
+}
+.navBar{
+    padding: 5px;
+	margin-bottom: 40px;
+    display: inline-block;
+	margin-left:12.5%;
+	margin-right: 12.5%;
+}
+.navBar li{
+    display: inline;
+    padding: 5px;
+	text-align: center;
+}
+.navBar li a{
+	text-decoration: none;
+	color: black;
+}
+.filters{
+	margin: 5px;
+	margin-left: 40px;
+}
+.teaImg{
+    height: 160px;
+    width: 160px;
+}
+.teaItem{
+    display: block;
+    padding: 15px;
+    height: 400px;
+	align-content: center;
+}
+.narrow{
+	padding-left: 130px;
+	padding-right: 130px;
+}
+.aboutRight{
+	float: right;
+	margin-right: 40px;
+}
+.aboutLeft{
+	margin-left: 40px;
+}
+.teaFlowerImg{
+	background: url(Images/Tea-Flowers-Wallpaper.jpg);
+    background-repeat: round;
+    display: inline-block;
+    height: 270px;
+	width: 400px;
+}
+.teaCupImg{
+	background: url(Images/Tea_Cup.jpg);
+    background-repeat: round;
+    display: inline-block;
+    height: 250px;
+	width: 400px;
+	margin-bottom: 5px;
+}
+.items{
+	margin: 50px 20px;
+}
+.item{
+	display: block;
+	width: 250px;
+	margin: 0 auto;
+	text-align: center;
+}
+.cartCounter{
+	position: absolute;
+	top: -8px;
+	right: -12px;
+	font-size: 10px;
+	font-weight: bolder;
+	padding: 1px 5px;
+	border-radius: 100%;
+	background: #EF423C;
+	color: white;
+}
+.checkboxFilter{
+	padding: 0;
+}
+.shoppingCart{
+	position: relative;
+	margin-right: 10px;
+}
+.qty{
+	width: 40px;
+	padding: 2px;
+	height: 24px;
+	font-size: 14px;
+	text-align: center;
+}
+.qtyWrap{
+	margin: 10px;
+	margin-bottom: 15px;
+}
+.successMsg{
+	display: none;
+}
+.homeTitle{
+	margin: 20px;
+	margin-left: 55px;
+}
+.mainView{
+	margin-bottom: 50px;
+}
+.cartTitle{
+	margin-left: 10px;
+	margin-bottom: 20px;
+	text-decoration: underline;
+	font-weight: bold;
+	clear:both;
+}
+.searchResultErr{
+	font-weight: bold;
+	text-align: center;
+	background: #F0EFEE;
+	padding: 3px;
+}
+.Checkout{
+	margin-left: 5px;
+	font-size: 16px;
+	font-weight: bold;
+}

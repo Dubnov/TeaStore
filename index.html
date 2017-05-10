@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="teaStore">
+    <head>
+        <meta charset="utf-8">
+        <title>TasTea</title>
+		<link rel="shortcut icon" href="css/Images/Favicon.png"/> 
+		<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css"/> 
+	</head>
+    <body>        
+        <header>
+            <div class="topMenu">
+               <cart-icon></cart-icon>             
+            </div>
+            <div class="siteTitle">
+                <a href="#!/"><img class="siteLogo" src="css/Images/Icon.png" width="250"/></a>
+            </div>
+            <div class="teaWallpaper"></div>
+			<ul class="navBar nav nav-tabs col-md-9">
+				<li class="col-sm-4"><a href="#!/"> Home </a></li>
+				<li class="col-sm-4"><a href="#!/about" > About Us </a></li>
+				<li class="col-sm-4"><a href="#!/allTeas"> All Teas </a></li>
+			</ul>
+        </header>
+        
+        <section class="col-md-12 mainView" ng-view="">
+        </section>
+        
+        <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+		<script src="bower_components/jquery/dist/jquery.min.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="javascript/app.js"></script>
+        
+        <!-- Services -->
+        <script type="text/javascript" src="javascript/services/teaFactory.js"></script>
+        <script type="text/javascript" src="javascript/services/cartFactory.js"></script>
+        
+        <!-- Controllers -->
+        <script type="text/javascript" src="javascript/controllers/homeController.js"></script>
+        <script type="text/javascript" src="javascript/controllers/allTeasController.js"></script>
+        <script type="text/javascript" src="javascript/controllers/teaController.js"></script>
+		<script type="text/javascript" src="javascript/controllers/cartController.js"></script>
+        
+        <!-- Directives -->
+        <script type="text/javascript" src="javascript/directives/teaItem.js"></script>
+        <script type="text/javascript" src="javascript/directives/addToCart.js"></script>
+		<script type="text/javascript" src="javascript/directives/cartIcon.js"></script>
+    </body>
+</html>

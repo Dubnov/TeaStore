@@ -1,0 +1,23 @@
+{
+  "name": "tea-store",
+  "version": "1.0.0",
+  "description": "1. Download and install node.js from https://nodejs.org/en/download/ 2. In cmd - cd into the \"TeaStore-Client\" project and run 'node server.js' command  3. In the browser - type 'http://localhost:8080/' to see the website up and running.",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-animate": "^1.6.4",
+    "angular-aria": "^1.6.4",
+    "angular-material": "^1.1.4",
+    "body-parser": "^1.17.1",
+    "express": "^4.14.0",
+    "mongoose": "^4.9.8",
+    "socket.io": "^2.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
