@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="teaStore">
+    <head>
+        <meta charset="utf-8">
+        <title>TasTea</title>
+		<link rel="shortcut icon" href="public/Images/Favicon.png"/> 
+        <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.min.css"/>
+		<link rel="stylesheet" type="text/css" href="public/style.css"/> 
+	</head>
+    <body>        
+        <header>
+            <div class="topMenu">
+               <cart-icon></cart-icon>             
+            </div>
+            <div class="siteTitle">
+                <a href="#!/"><img class="siteLogo" src="public/Images/Icon.png" width="250"/></a>
+            </div>
+            <div class="teaWallpaper"></div>
+			<nav class="navBar nav nav-tabs col-md-9">
+				<li class="col-sm-4"><a href="#!/"> Home </a></li>
+				<li class="col-sm-4"><a href="#!/about" > About Us </a></li>
+				<li class="col-sm-4"><a href="#!/teas"> All Teas </a></li>
+            </nav>
+        </header>
+        
+        <section class="col-md-12 mainView" ui-view="">
+        </section>
+        
+        <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+        <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/node_modules/angular-aria/angular-aria.js"></script>
+        <script src="/node_modules/angular-animate/angular-animate.js"></script>
+        <script src="node_modules/angular-material/angular-material.min.js"></script>
+        <script type="text/javascript" src="node_modules/socket.io-client/dist/socket.io.js"></script>
+
+        <!-- Angular App -->
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="config/routes.config.js"></script>
+        
+        <!-- Services -->
+        <script type="text/javascript" src="services/teaFactory.js"></script>
+        <script type="text/javascript" src="services/cartFactory.js"></script>
+        
+        <!-- Directives -->
+        <script type="text/javascript" src="directives/teaItem.js"></script>
+        <script type="text/javascript" src="directives/addToCart.js"></script>
+        <script type="text/javascript" src="directives/cartIcon.js"></script>
+        
+        <!-- Components -->
+        <script type="text/javascript" src="components/all.teas/all.teas.component.js"></script>
+        <script type="text/javascript" src="components/tea/tea.component.js"></script>
+        <script type="text/javascript" src="components/home/home.component.js"></script>
+        <script type="text/javascript" src="components/cart/cart.component.js"></script>
+    </body>
+</html>

@@ -10,13 +10,13 @@ angular.module('teaStore').
                 return items;                
             },
             addCartItem: function(item){
-				var itemInCart = sessionStorage.getItem(item.id);
+				var itemInCart = sessionStorage.getItem(item._id);
 				
 				if (itemInCart === null){
-					sessionStorage.setItem(item.id, JSON.stringify({item: item, qty: 1}));				
+					sessionStorage.setItem(item._id, JSON.stringify({item: item, qty: 1}));				
 				}
 				else{
-					sessionStorage.setItem(item.id, JSON.stringify({item: item, qty: JSON.parse(itemInCart).qty + 1}));
+					sessionStorage.setItem(item._id, JSON.stringify({item: item, qty: JSON.parse(itemInCart).qty + 1}));
 				}	
             },
 			removeItem: function(id){
@@ -26,13 +26,13 @@ angular.module('teaStore').
 				return sessionStorage.length;
 			},
 			updateItemQty: function(cartItem){
-				var itemInCart = sessionStorage.getItem(cartItem.item.id);
+				var itemInCart = sessionStorage.getItem(cartItem.item._id);
 				
 				if (itemInCart === null){
 					return;
 				}
 				else {
-					sessionStorage.setItem(cartItem.item.id, JSON.stringify(cartItem));
+					sessionStorage.setItem(cartItem.item._id, JSON.stringify(cartItem));
 				}
 
 			}

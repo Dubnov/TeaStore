@@ -1,0 +1,14 @@
+<div class="narrow">
+	<h3 class="cartTitle" ng-if="ctrl.cartItems.length">SHOPPING CART</h3>
+	<tea-item ng-repeat="tea in ctrl.cartItems" tea="tea.item" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice">
+		<div class="qtyWrap">
+			<lable>Quantity:</lable>
+			<input class="qty" type="number" min="1" max="100" ng-change="ctrl.updateQty(tea)" ng-model="tea.qty"/>
+		</div>
+		<h5> Total: {{tea.item.price * tea.qty | currency}}</h5>
+		<button class="btn btn-default" ng-click="ctrl.removeItem(tea)">Remove</button>
+	</tea-item>
+	<h3 class="cartTitle" ng-if="ctrl.cartItems.length"> TOTAL: {{ getTotalPrice() | currency}}</h3>
+	<button class="Checkout btn btn-default" ng-if="ctrl.cartItems.length">Checkout Now</button>
+	<h3 ng-if="!ctrl.cartItems.length">You have no items in your shopping cart.</h3>
+</div>

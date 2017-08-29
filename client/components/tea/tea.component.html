@@ -1,0 +1,9 @@
+<div class="narrow col-md-6">
+	<img class="teaImg" ng-src="public/Images/{{ctrl.tea.image}}"/> 
+	<h1> {{ctrl.tea.name}} </h1>
+	<p> Type: {{ctrl.tea.teaType.name}} </p>
+	<p> Caffeine Level: {{ctrl.tea.caffeineLevel}} </p>
+	<p> {{ctrl.tea.description }} </p>
+	<h4> {{ctrl.tea.price | currency}} | 30g</h4>
+	<add-to-cart add-to-cart="addToCart" tea="tea"></add-to-cart>
+</div>
