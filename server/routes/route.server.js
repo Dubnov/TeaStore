@@ -3,8 +3,9 @@
 const teasController = require('../controllers/teas.controller.server');
 const path = require('path');
 
+
 module.exports = (app) => {
-    app.route('/').get((req, res) => {
+    app.route('/').get((req, res) => {        
 		res.sendFile(path.resolve('server/views/index.html'));
 	});
 

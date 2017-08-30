@@ -43,6 +43,14 @@
                     }
                 }
             })
+            .state('manager-teas', {
+                url: '/manager-teas',
+                component: 'manageTeas'
+            })
+            .state('manager-teatypes', {
+                url: '/manager-teatypes',
+                component: 'manageTeaTypes'
+            })
             .state('cart', {
                 url: '/cart',
                 component: 'cart',

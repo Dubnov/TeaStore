@@ -4,45 +4,57 @@
         <meta charset="utf-8">
         <title>TasTea</title>
 		<link rel="shortcut icon" href="public/Images/Favicon.png"/> 
-        <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
         <link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.min.css"/>
 		<link rel="stylesheet" type="text/css" href="public/style.css"/> 
 	</head>
-    <body>        
-        <header>
-            <div class="topMenu">
+    <body>
+        <header class="header" layout="row">
+            <div class="cart-btn">
                <cart-icon></cart-icon>             
             </div>
-            <div class="siteTitle">
-                <a href="#!/"><img class="siteLogo" src="public/Images/Icon.png" width="250"/></a>
+            <div flex="15" class="">
+                <a ui-sref="home"><img class="" src="public/Images/Icon.png" width="200"/></a>
             </div>
-            <div class="teaWallpaper"></div>
-			<nav class="navBar nav nav-tabs col-md-9">
-				<li class="col-sm-4"><a href="#!/"> Home </a></li>
-				<li class="col-sm-4"><a href="#!/about" > About Us </a></li>
-				<li class="col-sm-4"><a href="#!/teas"> All Teas </a></li>
+            <!-- <div class="teaWallpaper"></div> -->
+			<nav flex="60" layout="row" layout-align="start center" class="tea-store-nav-bar">
+				<li><a ui-sref="home"> Home </a></li>
+				<li><a ui-sref="about" > About Us </a></li>
+                <li><a ui-sref="teas"> All Teas </a></li>
+                <md-menu md-offset="0 40">
+                    <span ng-mouseenter="$mdMenu.open()">Manager</span>
+                    <md-menu-content ng-mouseleave="$mdMenu.close()">
+                        <md-menu-item>                            
+                            <md-button ui-sref="manager-teas"> Manage Teas </md-button>                            
+                        </md-menu-item>                  
+                        <md-menu-item>
+                            <md-button ui-sref="manager-teatypes"> Manage Tea Types </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </nav>
         </header>
         
-        <section class="col-md-12 mainView" ui-view="">
+        <section class="mainView" ui-view="">
         </section>
         
         <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
         <script type="text/javascript" src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
-		<script src="node_modules/jquery/dist/jquery.min.js"></script>
-        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="/node_modules/angular-aria/angular-aria.js"></script>
-        <script src="/node_modules/angular-animate/angular-animate.js"></script>
-        <script src="node_modules/angular-material/angular-material.min.js"></script>
-        <script type="text/javascript" src="node_modules/socket.io-client/dist/socket.io.js"></script>
+		<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-aria/angular-aria.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-animate/angular-animate.js"></script>
+        <script type="text/javascript" src="node_modules/angular-material/angular-material.min.js"></script>
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
         <!-- Angular App -->
         <script type="text/javascript" src="app.js"></script>
         <script type="text/javascript" src="config/routes.config.js"></script>
         
         <!-- Services -->
-        <script type="text/javascript" src="services/teaFactory.js"></script>
-        <script type="text/javascript" src="services/cartFactory.js"></script>
+        <script type="text/javascript" src="services/tea.service.js"></script>
+        <script type="text/javascript" src="services/cart.service.js"></script>
+        <script type="text/javascript" src="services/socket.service.js"></script>
         
         <!-- Directives -->
         <script type="text/javascript" src="directives/teaItem.js"></script>
@@ -54,5 +66,8 @@
         <script type="text/javascript" src="components/tea/tea.component.js"></script>
         <script type="text/javascript" src="components/home/home.component.js"></script>
         <script type="text/javascript" src="components/cart/cart.component.js"></script>
+        <script type="text/javascript" src="components/manager/manager.component.js"></script>
+        <script type="text/javascript" src="components/manage.teas/manage.teas.component.js"></script>
+        <script type="text/javascript" src="components/manage.tea.types/manage.tea.types.component.js"></script>
     </body>
 </html>

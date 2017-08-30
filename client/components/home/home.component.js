@@ -12,15 +12,33 @@
             }
         });
 
-    HomeController.$inject = [];
+    HomeController.$inject = ['socketService'];
 
-    function HomeController() {
+    function HomeController(socketService) {
         var self = this;
+        socketService.emit('home', 'controller');
+        socketService.on('data', function(data) {
+            console.log(data);
+        });
 
         self.$onInit = function() {
-            self.teas = self.teas.data;
+            self.teas = initData(self.teas.data);
             self.addToCart = false;
             self.showPrice = false;
+
+            
         }
+
+        function initData(data) {
+			if (!data) {
+				return data;
+			}
+			var results = [];
+			for (var i = 0; i < data.length; i++) {
+				results = results.concat(data[i].teas);
+			}
+
+			return results;
+		}
     }
 })();

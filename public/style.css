@@ -7,13 +7,22 @@
     font-family: basicFont,Monospace,sans-serif;
 	font-size: 15px;
 }
+
+body {
+	background-color: #ffffff;
+}
+
+.header {
+	background-color: #fafafa;
+	margin-bottom: 20px;
+}
 a, a:hover, a:focus{
    text-decoration: none; 
 }
-.topMenu{
-    float: right;
-    margin-right: 5px;
-    margin-top: 3px;
+.cart-btn{
+	position: fixed;
+	right: 5px;
+	top: 5px;
 }
 .siteLogo{
 	margin-top: 45px;
@@ -31,25 +40,27 @@ a, a:hover, a:focus{
     height: 210px;
     width: 100%;
 }
-.navBar{
+.tea-store-nav-bar{
     padding: 5px;
-	margin-bottom: 40px;
-    display: inline-block;
-	margin-left:12.5%;
-	margin-right: 12.5%;
 }
-.navBar li{
-    display: inline;
+.tea-store-nav-bar li{
+	display: inline-block;
+	list-style: none;
+	margin-right: 10px;
+	min-width: 100px;
     padding: 5px;
 	text-align: center;
 }
-.navBar li a{
+.tea-store-nav-bar li:hover {
+	background-color: #dadada;
+}
+.tea-store-nav-bar li a{
 	text-decoration: none;
 	color: black;
 }
-.filters{
-	margin: 5px;
-	margin-left: 40px;
+.teas-filters{
+	width: 600px;
+	margin: 5px auto 30px auto;
 }
 .teaImg{
     height: 160px;
@@ -58,25 +69,32 @@ a, a:hover, a:focus{
 .teaItem{
     display: block;
     padding: 15px;
-    height: 400px;
+    height: 350px;
 	align-content: center;
 }
 .narrow{
+	margin-top: 30px;
 	padding-left: 130px;
 	padding-right: 130px;
 }
-.aboutRight{
-	float: right;
-	margin-right: 40px;
+.about-container {
+	margin: 0 auto;
+	width: 1000px;
 }
-.aboutLeft{
+
+.about-section{
+	max-width: 400px;
+}
+
+.about-section.right{
 	margin-left: 40px;
 }
 .teaFlowerImg{
 	background: url(Images/Tea-Flowers-Wallpaper.jpg);
     background-repeat: round;
     display: inline-block;
-    height: 270px;
+	height: 270px;
+	margin-top: 20px;
 	width: 400px;
 }
 .teaCupImg{
@@ -85,10 +103,9 @@ a, a:hover, a:focus{
     display: inline-block;
     height: 250px;
 	width: 400px;
-	margin-bottom: 5px;
+	margin-bottom: 20px;
 }
 .items{
-	margin: 50px 20px;
 }
 .item{
 	display: block;
@@ -98,17 +115,30 @@ a, a:hover, a:focus{
 }
 .cartCounter{
 	position: absolute;
-	top: -8px;
+	top: -20px;
 	right: -12px;
 	font-size: 10px;
 	font-weight: bolder;
-	padding: 1px 5px;
+	padding: 2px 5px;
 	border-radius: 100%;
 	background: #EF423C;
 	color: white;
 }
-.checkboxFilter{
+
+
+
+.checkbox-filters{
+	margin-top: 10px;
+	margin-left: 20px;
 	padding: 0;
+}
+
+.aside-filter-header {
+	margin: 20px 0 10px 0;
+}
+
+.checkbox-filters .checkbox {
+	margin: 5px 0;
 }
 .shoppingCart{
 	position: relative;
@@ -133,7 +163,9 @@ a, a:hover, a:focus{
 	margin-left: 55px;
 }
 .mainView{
-	margin-bottom: 50px;
+	background-color: #ffffff;
+	margin: 0 auto 50px auto;
+	width: 1300px;
 }
 .cartTitle{
 	margin-left: 10px;
@@ -142,6 +174,12 @@ a, a:hover, a:focus{
 	font-weight: bold;
 	clear:both;
 }
+
+.cart-total {
+	margin-left: 10px;
+	margin-bottom: 20px;
+}
+
 .searchResultErr{
 	font-weight: bold;
 	text-align: center;

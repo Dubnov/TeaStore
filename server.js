@@ -1,7 +1,8 @@
 const express = require('express');
-const app = express();
+let app = express();
 const mongoose = require('mongoose');
 const path = require('path');
+const socket = require('./server/socket.io.js');
 
 try {
 	mongoose.connect('mongodb://127.0.0.1:27017/teastore').then(() => {
@@ -15,7 +16,9 @@ try {
 		require(path.resolve('server/models/tea.type.model.server'))
 
 		// Require the routes of the project
-		require(path.resolve('server/routes/route.server'))(app);	
+		require(path.resolve('server/routes/route.server'))(app);
+		
+		app = socket.init(app);
 		
 		app.listen(8080, function(){
 			console.log("app listening on port 8080");

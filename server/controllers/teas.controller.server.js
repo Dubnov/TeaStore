@@ -3,8 +3,13 @@
 const mongoose = require('mongoose');
 const Tea = mongoose.model('Tea');
 const TeaType = mongoose.model('TeaType');
+const socket = require('../socket.io.js');
 
 module.exports.getAllTeas = (req, res) => {
+    socket.on('home', (data) => {
+        console.log(data);
+        socket.emit('data', 'socket test succeeded');
+    });
     Tea.aggregate([
         {
             $group: {
