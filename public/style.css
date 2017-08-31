@@ -58,6 +58,26 @@ a, a:hover, a:focus{
 	text-decoration: none;
 	color: black;
 }
+
+.manage-nav-menu {
+	background-color: rgba(250, 250, 250, 0.85);
+	list-style-type: none;
+	margin: 0;
+	opacity: 1;
+	padding: 0;
+	position: absolute;	
+	visibility: visible;
+	z-index: 100000;
+}
+
+.manage-nav-menu li {
+	display: block;
+}
+
+.nav-menu-option-manager:hover .manage-nav-menu {
+	opacity: 1;
+	visibility: visible;
+}
 .teas-filters{
 	width: 600px;
 	margin: 5px auto 30px auto;
@@ -190,4 +210,17 @@ a, a:hover, a:focus{
 	margin-left: 5px;
 	font-size: 16px;
 	font-weight: bold;
+}
+.add-tea-btn {
+	background-color: #3C42EE !important;
+	bottom: 5px;
+	font-size: 24px;
+	right: 5px;	
+	position: fixed;
+}
+
+.add-edit-tea-dialog {
+	height: 100%;
+	padding: 10px 30px;
+	width: 100%;
 }

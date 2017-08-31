@@ -1,0 +1,33 @@
+<section class="add-edit-tea-dialog" layout="column">
+    <md-input-container>
+        <label>Name</label>
+        <input ng-model="ctrl.tea.name">
+    </md-input-container>
+    <md-input-container>
+        <label>Type</label>
+        <md-select ng-model="ctrl.tea.teaType">
+            <md-option ng-repeat="type in ctrl.teaTypes" ng-value="type.name">
+                {{type.name}}
+            </md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <label>Price</label>
+        <input ng-model="ctrl.tea.price">
+    </md-input-container>
+    <md-input-container>
+        <label>Caffeine Level</label>
+        <md-select ng-model="ctrl.tea.caffeineLevel">
+            <md-option ng-repeat="caffeLevel in ctrl.caffeineLevels" ng-value="caffeLevel.key">
+                {{caffeLevel.value}}
+            </md-option>
+        </md-select>
+    </md-input-container>
+    <md-input-container>
+        <label>Description</label>
+        <input ng-model="ctrl.tea.description">
+    </md-input-container>
+    <div>
+        <md-buttonc class="md-primary md-rasied" ng-click="ctrl.save()">Add</md-button>
+    </div>
+</section>

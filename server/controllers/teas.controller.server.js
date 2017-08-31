@@ -5,6 +5,10 @@ const Tea = mongoose.model('Tea');
 const TeaType = mongoose.model('TeaType');
 const socket = require('../socket.io.js');
 
+module.exports.cartCheckout = (req, res) => {
+    socket.emit('checkout', {message: 'succeeded'});
+}
+
 module.exports.getAllTeas = (req, res) => {
     socket.on('home', (data) => {
         console.log(data);
@@ -49,6 +53,35 @@ module.exports.getAllTeaTypes = (req, res) => {
         res.status(500).json(err);
     });
 };
+
+module.exports.addTea = (req, res) => {
+    let tea = new Tea(req.body);
+
+    tea.save().then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);        
+    });    
+}
+
+module.exports.updateTea = (req, res) => {
+    Tea.findByIdAndUpdate(req.body._id, req.body).then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);        
+    });    
+}
+
+module.exports.deleteTea = (req, res) => {
+    Tea.findByIdAndRemove(req.params.id).then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);        
+    });    
+}
 
 module.exports.addTeaTypes = (req, res) => {
     const now = new Date();
