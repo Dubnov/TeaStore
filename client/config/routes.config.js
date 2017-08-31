@@ -22,6 +22,15 @@
                 url: '/about',
                 templateUrl: 'pages/about.html'
             })
+            .state('stores', {
+                url: '/stores',
+                component: 'stores',
+                resolve: {
+                    stores: function(StoreFactory) {
+                        return StoreFactory.getAllStores();
+                    }
+                }
+            })
             .state('teas', {
                 url: '/teas',
                 component: 'teas',
