@@ -14,6 +14,7 @@ try {
 		// Require all mongoose models
 		require(path.resolve('server/models/tea.model.server'))
 		require(path.resolve('server/models/tea.type.model.server'))
+		require(path.resolve('server/models/store.model.server'))
 
 		// Require the routes of the project
 		require(path.resolve('server/routes/route.server'))(app);

@@ -19,8 +19,9 @@
             <!-- <div class="teaWallpaper"></div> -->
 			<nav flex="60" layout="row" layout-align="start center" class="tea-store-nav-bar">
 				<li><a ui-sref="home"> Home </a></li>
-				<li><a ui-sref="about" > About Us </a></li>
                 <li><a ui-sref="teas"> All Teas </a></li>
+                <li><a ui-sref="stores"> Stores </a></li>
+				<li><a ui-sref="about" > About Us </a></li>
                 <md-menu md-offset="0 40">
                     <span ng-mouseenter="$mdMenu.open()">Manager</span>
                     <md-menu-content ng-mouseleave="$mdMenu.close()">
@@ -55,6 +56,7 @@
         <script type="text/javascript" src="services/tea.service.js"></script>
         <script type="text/javascript" src="services/cart.service.js"></script>
         <script type="text/javascript" src="services/socket.service.js"></script>
+        <script type="text/javascript" src="services/store.service.js"></script>
         
         <!-- Directives -->
         <script type="text/javascript" src="directives/teaItem.js"></script>
@@ -63,11 +65,15 @@
         
         <!-- Components -->
         <script type="text/javascript" src="components/all.teas/all.teas.component.js"></script>
+        <script type="text/javascript" src="components/stores/stores.component.js"></script>
         <script type="text/javascript" src="components/tea/tea.component.js"></script>
         <script type="text/javascript" src="components/home/home.component.js"></script>
         <script type="text/javascript" src="components/cart/cart.component.js"></script>
         <script type="text/javascript" src="components/manager/manager.component.js"></script>
         <script type="text/javascript" src="components/manage.teas/manage.teas.component.js"></script>
         <script type="text/javascript" src="components/manage.tea.types/manage.tea.types.component.js"></script>
+
+        <!-- APIs -->
+        <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWBqFys-8rdAyBvJ5yZI2KFZfcbVzJU8Q"></script>
     </body>
 </html>

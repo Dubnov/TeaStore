@@ -1,0 +1,15 @@
+<h2 style="font-size: 24pt; text-decoration: underline;text-align: center;">Our Stores</h2>
+<br>
+<div class="items" layout="row" layout-wrap>
+    <div flex="33" ng-repeat="store in ctrl.stores" style="text-align: center;margin-bottom:30px;">
+        <div>
+            <h3 style="text-decoration: underline; font-style: italic">{{store.name}}</h3>
+            <div>Address: {{store.address}}</div>
+            <div>City: {{store.city}}</div>
+            <div>Phone: {{store.phone}}</div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div id="googleMap" style="width:500px;height:380px;margin:auto"></div>
