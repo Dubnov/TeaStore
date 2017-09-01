@@ -26,7 +26,14 @@
             self.addToCart = false;
             self.showPrice = false;
 
-            
+            initCanvasTitle();            
+        }
+
+        function initCanvasTitle() {
+            var c = document.getElementById("myCanvas");
+            var ctx = c.getContext("2d");
+            ctx.font = "35px Arial";
+            ctx.strokeText("Welocome To Tastea", 10, 50);   
         }
 
         function initData(data) {
