@@ -191,3 +191,37 @@ a, a:hover, a:focus{
 	font-size: 16px;
 	font-weight: bold;
 }
+
+.storeItem {
+	text-align: center;
+	margin-bottom:30px;
+}
+
+.storeItemTitle {
+	text-decoration: underline; 
+	font-style: italic;
+}
+
+.gMap {
+	width:500px;
+	height:380px;
+	margin:auto
+}
+
+.storesCompTitle {
+	font-size: 24pt; 
+	text-decoration: underline;
+	text-align: center;
+}
+
+.mapMarkerContent {
+	margin-left: 10px;
+}
+
+.footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    right: 0;
+	background-color: #f9f7f7
+}
