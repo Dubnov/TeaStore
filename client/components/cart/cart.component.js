@@ -20,6 +20,8 @@
         self.$onInit = function() {
             self.addToCart = false;
             self.showPrice = false;
+
+            self.getTotalPrice();
         }
         
         self.removeItem = function(tea){		
@@ -34,11 +36,17 @@
         }
 
         self.getTotalPrice = function(){
-            var sum = 0;
+            var usdSum = 0;
             for (var i=0; i<self.cartItems.length; i++){
-                sum = sum + (self.cartItems[i].item.price * self.cartItems[i].qty);
+                usdSum = usdSum + (self.cartItems[i].item.price * self.cartItems[i].qty);
             }
-            return sum;
+
+            if (usdSum != 0) {
+                self.totalUSDPrice = usdSum;
+                CartFactory.convertToNIS(usdSum).then((price)=> {
+                    self.totalNISPrice = price;
+                });
+            }
         }
     };
 })();
