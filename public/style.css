@@ -225,3 +225,20 @@ a, a:hover, a:focus{
     right: 0;
 	background-color: #f9f7f7
 }
+
+.teaCategory {
+	font-weight: bold; 
+	text-decoration: underline;
+}
+
+.aboutTeaTitle {
+	text-decoration: underline;
+	font-size: 24pt; 
+	font-weight: bold;
+}
+
+.aboutTeaContent {
+	column-count: 2;
+	-moz-column-count: 2;
+	-webkit-column-count: 2;
+}
