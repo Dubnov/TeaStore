@@ -4,22 +4,23 @@
         .factory('socketService', SocketService);
 
     function SocketService() {
-        var socket = io();
+        var self = this;
+        self.socket = io();
 
         var service = {
             on: on,
-            emit: emit
+            emit: emit,
+            socket: self.socket
         }
 
-        
         return service;
 
         function on(event, callback) {
-            socket.on(event, callback);
+            self.socket.on(event, callback);
         }
 
         function emit(event, data) {
-            socket.emit(event, data);
+            self.socket.emit(event, data);
         }
     }
 })();

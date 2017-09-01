@@ -12,14 +12,22 @@
             }
         });
 
-    CartController.$inject = ['CartFactory', '$rootScope'];
+    CartController.$inject = ['CartFactory', '$rootScope', 'socketService', '$http'];
     
-    function CartController(CartFactory, $rootScope) {
+    function CartController(CartFactory, $rootScope, socketService, $http) {
         var self = this;
 
         self.$onInit = function() {
             self.addToCart = false;
             self.showPrice = false;
+
+            // socketService.on('checkout', function(data) {
+            //     console.log(data);
+            // });
+
+            // $http.get('/api/cart').then(data => {
+
+            // });
 
             self.getTotalPrice();
         }

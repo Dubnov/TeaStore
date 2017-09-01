@@ -4,6 +4,12 @@ const mongoose = require('mongoose');
 const Tea = mongoose.model('Tea');
 const TeaType = mongoose.model('TeaType');
 const socket = require('../socket.io.js');
+const path = require('path');
+const multer = require('multer');
+
+module.exports.cartCheckout = (req, res) => {
+    socket.emit('checkout', {message: 'succeeded'});
+}
 
 module.exports.getAllTeas = (req, res) => {
     socket.on('home', (data) => {
@@ -49,6 +55,39 @@ module.exports.getAllTeaTypes = (req, res) => {
         res.status(500).json(err);
     });
 };
+
+module.exports.addTea = (req, res) => {
+    let tea = new Tea(req.body);
+
+    tea.save().then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);        
+    });    
+}
+
+module.exports.updateTea = (req, res) => {
+    Tea.findByIdAndUpdate(req.body._id, req.body).then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);        
+    });    
+}
+
+module.exports.deleteTea = (req, res) => {
+    Tea.findByIdAndRemove(req.params.id).then(result => {
+        res.json(result);
+    }).catch(err => {
+        console.log(err);
+        res.status(500).json(err);        
+    });    
+}
+
+module.exports.uploadTeaImage = (req, res) => {
+    res.json(req.file);
+}
 
 module.exports.addTeaTypes = (req, res) => {
     const now = new Date();

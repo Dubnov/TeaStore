@@ -54,11 +54,24 @@
             })
             .state('manager-teas', {
                 url: '/manager-teas',
-                component: 'manageTeas'
+                component: 'manageTeas',
+                resolve: {
+                    teas: function(TeaFactory){
+                        return TeaFactory.getAllTeas();
+                    },
+                    teaTypeList: function(TeaFactory){
+                        return TeaFactory.getAllTeaTypes();
+                    }
+                }                
             })
             .state('manager-teatypes', {
                 url: '/manager-teatypes',
-                component: 'manageTeaTypes'
+                component: 'manageTeaTypes',
+                resolve: {
+                    teaTypes: function(TeaFactory){
+                        return TeaFactory.getAllTeaTypes();
+                    }
+                }
             })
             .state('cart', {
                 url: '/cart',

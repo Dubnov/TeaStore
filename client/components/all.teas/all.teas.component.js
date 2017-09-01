@@ -13,9 +13,9 @@
 			}
         });
 
-    TeasController.$inject = [];
+    TeasController.$inject = ['TeaFactory'];
 
-    function TeasController() {
+    function TeasController(TeaFactory) {
 		var self = this;
 		
 		self.$onInit = function() {
@@ -24,7 +24,7 @@
 			self.orderbyfilter = "";
 			self.addToCart = true;
 			self.showPrice = true;
-			self.caffeineLevels = [{key:0,value:"Free"},{key:1,value:"Low"},{key:2,value:"Medium"},{key:3,value:"High"}];
+			self.caffeineLevels = TeaFactory.getAllCaffeineLevels();
 		
 			self.typeFilter = {};
 			for (var i=0; i< self.teaTypeList.length; i++){

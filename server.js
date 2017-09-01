@@ -1,11 +1,14 @@
 const express = require('express');
 let app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 const path = require('path');
 const socket = require('./server/socket.io.js');
 
 try {
 	mongoose.connect('mongodb://127.0.0.1:27017/teastore').then(() => {
+		app.use(bodyParser.urlencoded({ extended: false }));
+		app.use(bodyParser.json());
 		app.use('/public', express.static('public'));
 		app.use('/node_modules', express.static('node_modules'));
 		app.use(express.static('client'));
