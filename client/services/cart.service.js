@@ -1,5 +1,5 @@
 angular.module('teaStore').
-    factory('CartFactory', function cartFactory(){
+    factory('CartFactory', function cartFactory($http, $q){
         return {            
             getCartItems: function(){
 				var items = [];
@@ -35,6 +35,16 @@ angular.module('teaStore').
 					sessionStorage.setItem(cartItem.item._id, JSON.stringify(cartItem));
 				}
 
+			},
+			convertToNIS: function (usdSum) {
+				deferred = $q.defer();
+
+				$http.get('http://api.fixer.io/latest?base=USD')
+				.then((response) => {
+					deferred.resolve(usdSum * response.data.rates.ILS);
+				})
+
+				return deferred.promise;
 			}
         }
 });
