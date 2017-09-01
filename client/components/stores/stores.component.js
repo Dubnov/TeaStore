@@ -36,7 +36,7 @@
                         map: map
                     });
 
-                    var markerContent = '<div style="margin-left: 10px">' + store.name + '</div>';
+                    var markerContent = '<div class="mapMarkerContent">' + store.name + '</div>';
 
                     var infowindow = new google.maps.InfoWindow({
                         content: markerContent
