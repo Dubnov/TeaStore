@@ -92,6 +92,23 @@ a, a:hover, a:focus{
     height: 350px;
 	align-content: center;
 }
+
+.item{
+	display: block;
+	position: relative;
+	width: 250px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.teaItem .item .remove-tea-btn{
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: transparent;
+	border: none;
+	font-size: 18px;
+}
 .narrow{
 	margin-top: 30px;
 	padding-left: 130px;
@@ -125,14 +142,7 @@ a, a:hover, a:focus{
 	width: 400px;
 	margin-bottom: 20px;
 }
-.items{
-}
-.item{
-	display: block;
-	width: 250px;
-	margin: 0 auto;
-	text-align: center;
-}
+
 .cartCounter{
 	position: absolute;
 	top: -20px;
@@ -221,8 +231,27 @@ a, a:hover, a:focus{
 
 .add-edit-tea-dialog {
 	height: 100%;
-	padding: 10px 30px;
-	width: 100%;
+	/* padding: 10px 30px; */
+	width: 300px;
+}
+.add-edit-tea-dialog .container {
+	margin-left: 20px;
+}
+.add-edit-tea-dialog .title-wrapper {
+	background-color: #3C42EE;
+	padding: 10px;
+}
+
+.add-edit-tea-dialog .title-wrapper h1 {
+	color: #ffffff;
+	margin-left: 20px;
+}
+
+.add-edit-tea-dialog md-input-container {
+	height: 50px;
+	min-height: 50px;
+	margin: 10px 0;
+	max-width: 200px;
 }
 
 .storeItem {
@@ -276,3 +305,22 @@ a, a:hover, a:focus{
 	-moz-column-count: 2;
 	-webkit-column-count: 2;
 }
+
+.image-uploader-wrapper {
+	overflow: hidden;
+	position: relative;
+}
+
+.image-uploader-wrapper .image-uploader-text {
+	cursor: pointer;
+	font-size: 16px;
+	text-decoration: underline;
+}
+
+.image-uploader-wrapper input[type=file].image-uploader-button {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+  }

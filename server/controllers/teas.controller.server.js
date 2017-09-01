@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const Tea = mongoose.model('Tea');
 const TeaType = mongoose.model('TeaType');
 const socket = require('../socket.io.js');
+const path = require('path');
+const multer = require('multer');
 
 module.exports.cartCheckout = (req, res) => {
     socket.emit('checkout', {message: 'succeeded'});
@@ -81,6 +83,10 @@ module.exports.deleteTea = (req, res) => {
         console.log(err);
         res.status(500).json(err);        
     });    
+}
+
+module.exports.uploadTeaImage = (req, res) => {
+    res.json(req.file);
 }
 
 module.exports.addTeaTypes = (req, res) => {

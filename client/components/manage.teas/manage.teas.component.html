@@ -30,7 +30,8 @@
     </aside>
     <div flex class="">        
         <div class="items" layout="row" layout-wrap>
-            <tea-item flex="33" ng-repeat="tea in (ctrl.filteredTeas = (ctrl.teas | filter:{name:ctrl.searchText} | filter:ctrl.filterByTeaType | filter:ctrl.filterByCaffeineLevel | orderBy:ctrl.orderbyfilter))" tea="tea" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice">
+            <tea-item flex="33" ng-repeat="tea in (ctrl.filteredTeas = (ctrl.teas | filter:{name:ctrl.searchText} | filter:ctrl.filterByTeaType | filter:ctrl.filterByCaffeineLevel | orderBy:ctrl.orderbyfilter))"
+                      tea="tea" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice" manager="true">
             </tea-item>
             <h4 class="searchResultErr" ng-if="!ctrl.filteredTeas.length">There are no matched items</h4>
         </div>

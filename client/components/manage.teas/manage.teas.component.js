@@ -83,29 +83,32 @@
                     caffeineLevels: self.caffeineLevels
                 },
                 controllerAs: 'ctrl',
-                controller: function(TeaFactory, tea, teaTypes, caffeineLevels) {
+                controller: function(TeaFactory, tea, teaTypes, caffeineLevels, Upload) {
                     var self = this;
                     self.tea = tea;
                     self.teaTypes = teaTypes;
                     self.caffeineLevels = caffeineLevels;
 
-                    self.save = function() {
-                        // var tea = {
-                        //     name: '',
-                        //     price: 0,
-                        //     caffeineLevel: 0,
-                        //     description: '',
-                        //     image: '',
-                        //     teaType: '',
-                        //     updateDate: new Date(),
-                        //     creationDate: new Date()
-                        // }
+                    self.title = 'Add Tea';
+                    if (self.tea) {
+                        self.title = 'Edit Tea';
+                    }
 
-                        TeaFactory.addTea(self.tea).then(data => {
-                            console.log(data);
-                            $mdDialog.hide();
-                        }).catch(() => {
-                            console.log('failed to add the requested tea');
+                    self.save = function() {
+                        Upload.upload({
+                            url: '/api/upload',
+                            data: {file: self.teaImage}
+                        }).then(function(result) {
+                            self.tea.image = result.data.filename;
+
+                            TeaFactory.addTea(self.tea).then(data => {
+                                console.log(data);
+                                $mdDialog.hide();
+                            }).catch(() => {
+                                console.log('failed to add the requested tea');
+                            });
+                        }).catch(function(err) {
+                            console.log('failed to upload the requested image');
                         });
                     }
                 }

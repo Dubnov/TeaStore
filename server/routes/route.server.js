@@ -3,7 +3,31 @@
 const teasController = require('../controllers/teas.controller.server');
 const storesController = require('../controllers/stores.controller.server');
 const path = require('path');
+const multer = require('multer');
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, path.resolve('public/Images/'));
+    }
+});
+
+let upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 5000000,
+        files: 1
+    },
+    fileFilter: imageFilter
+});
+
+function imageFilter(req, file, cb) {
+    // accept image only
+    if (!file.mimetype.match(/(jpg|jpeg|png|gif)$/)) {
+        return cb(new Error('Only image files are allowed!'), false);
+    }
+    
+    cb(null, true);
+};
 
 module.exports = (app) => {
     app.route('/').get((req, res) => {        
@@ -18,6 +42,8 @@ module.exports = (app) => {
     app.route('/api/teas/:id')
         .get(teasController.getTeaById)
         .delete(teasController.deleteTea);
+
+    app.route('/api/upload').post(upload.single('file'), teasController.uploadTeaImage);
         
     app.route('/api/teatypes/add').get(teasController.addTeaTypes);
 
@@ -29,3 +55,4 @@ module.exports = (app) => {
     app.route('/api/cart').get(teasController.cartCheckout);
 
 }
+
