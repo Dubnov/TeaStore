@@ -1,9 +1,7 @@
 <div class="teaItem">
 	<div class="item">
-		<button ng-if="manager" class="remove-tea-btn" ng-click="deleteTea()">X</button>
-		<button ng-if="manager" class="edit-tea-btn md-primary" ng-click="editTea()">Edit</button>
 		<a ng-href="#!/tea/{{tea._id}}">
-			<img class="teaImg" ng-src="public/Images/{{tea.image}}"/> 
+			<img class="teaImg" ng-src="{{imageUrl}}"/> 
 			<h3> {{tea.name}} </h3>
 			<h5 ng-show="{{showPrice}}"> {{tea.price | currency}}</h5>
 		</a>

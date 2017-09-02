@@ -18,12 +18,12 @@
             </div>
             <!-- <div class="teaWallpaper"></div> -->
 			<nav flex="60" layout="row" layout-align="start center" class="tea-store-nav-bar">
-				<li><a ui-sref="home"> Home </a></li>
-                <li><a ui-sref="teas"> All Teas </a></li>
-                <li><a ui-sref="stores"> Stores </a></li>
-				<li><a ui-sref="about" > About Us </a></li>
+				<li><a ui-sref="home" ui-sref-active="active"> Home </a></li>
+                <li><a ui-sref="teas" ui-sref-active="active"> All Teas </a></li>
+                <li><a ui-sref="stores" ui-sref-active="active"> Stores </a></li>
+				<li><a ui-sref="about" ui-sref-active="active"> About Us </a></li>
                 <md-menu md-offset="0 40">
-                    <span ng-mouseenter="$mdMenu.open()">Manager</span>
+                    <a ng-mouseenter="$mdMenu.open()">Manager</a>
                     <md-menu-content ng-mouseleave="$mdMenu.close()">
                         <md-menu-item>                            
                             <md-button ui-sref="manager-teas"> Manage Teas </md-button>                            
@@ -48,6 +48,7 @@
         <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="/node_modules/angular-aria/angular-aria.js"></script>
         <script type="text/javascript" src="/node_modules/angular-animate/angular-animate.js"></script>
+        <script type="text/javascript" src="/node_modules/angular-messages/angular-messages.min.js"></script>
         <script type="text/javascript" src="node_modules/angular-material/angular-material.min.js"></script>
         <script type="text/javascript" src="/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>

@@ -16,13 +16,7 @@
                 },
                 templateUrl: 'pages/templates/teaItem.html',
                 link: function(scope, element, attrs) {
-                    scope.deleteTea = function() {
-                        if (manager) {
-                            TeaFactory.deleteTea(scope.tea._id).then(function() {
-                                $(element).fadeOut();
-                            });
-                        }
-                    }
+                    scope.imageUrl = scope.tea.image ? 'public/Images/' + scope.tea.image : 'public/Images/tea.jpg';
                 }
             }
     }]);

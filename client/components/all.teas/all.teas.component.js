@@ -13,9 +13,9 @@
 			}
         });
 
-    TeasController.$inject = ['TeaFactory'];
+    TeasController.$inject = ['TeaFactory', 'socketService'];
 
-    function TeasController(TeaFactory) {
+    function TeasController(TeaFactory, socketService) {
 		var self = this;
 		
 		self.$onInit = function() {
@@ -58,6 +58,30 @@
 			}		
 			return false;
 		}
+
+		socketService.on('teaAdded', function(data) {
+			self.teas.push(data);
+		});
+
+		socketService.on('teaUpdated', function(data) {
+			var index = self.teas.findIndex(function(obj) {
+				return obj._id === data._id;
+			});
+
+			self.teas[index] = data;
+		});
+
+		socketService.on('teaTypeAdded', function(data) {
+			self.teaTypeList.push(data);
+		});
+
+		socketService.on('teaRemoved', function(data) {
+			var index = self.teas.findIndex(function(obj) {
+				return obj._id === data._id;
+			});
+
+			self.teas.splice(index, 1);
+		})
 
 		function initData(data) {
 			if (!data) {

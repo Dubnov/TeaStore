@@ -7,7 +7,8 @@ angular.module('teaStore').
             addTea: addTea,
             updateTea: updateTea,
             deleteTea: deleteTea,
-            getAllCaffeineLevels: getAllCaffeineLevels
+            getAllCaffeineLevels: getAllCaffeineLevels,
+            addTeaType: addTeaType
         }
 
         return service;
@@ -34,6 +35,10 @@ angular.module('teaStore').
 
         function deleteTea(teaId) {
             return $http.delete('/api/teas/' + teaId);
+        }
+
+        function addTeaType(teaType) {
+            return $http.post('/api/teatypes', teaType);
         }
 
         function getAllCaffeineLevels() {

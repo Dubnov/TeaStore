@@ -10,7 +10,7 @@ module.exports.init = (app) => {
     io = socketio.listen(server);
 
     io.on('connection', (socket) => {
-        console.log('socket connected');
+        
     });
 
     return server;

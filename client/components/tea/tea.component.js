@@ -20,6 +20,7 @@
         self.$onInit = function() {
             self.tea = self.tea.data;
             self.addToCart = true;
+            self.imageUrl = self.tea.image ? 'public/Images/' + self.tea.image : 'public/Images/tea.jpg';
         };        
     }
 })()

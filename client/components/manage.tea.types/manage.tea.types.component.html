@@ -1,0 +1,16 @@
+<div class="teas-filters">
+        Search by name:
+        <input class="form-control" type="text" ng-model="ctrl.searchText"/>
+</div>
+<section class="tea-types-list">
+    <md-list>
+        <md-subheader>Tea Types</md-subheader>
+        <md-list-item ng-repeat="teaType in ctrl.teaTypes | filter:ctrl.searchText">
+            <h2>{{teaType.name}}</h2>
+        </md-list-item>
+    </md-list>
+</section>
+    
+<md-button class="md-fab add-tea-btn" aria-label="Add Tea" ng-click="ctrl.openDialog($event)">
+    +
+</md-button>

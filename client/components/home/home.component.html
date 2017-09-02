@@ -3,7 +3,8 @@
 	<h1>Just for you...</h1>
 	<h3 class="homeTitle">Meet our Exclusive collection</h3>
 	<div layout="row">
-		<tea-item flex ng-repeat="tea in ctrl.teas | orderBy:'-price' | limitTo:3" tea="tea" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice">
+		<tea-item flex ng-repeat="tea in ctrl.teas | orderBy:'-price' | limitTo:3"
+				  tea="tea" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice">
 		</tea-item>
 	</div>
 </div>

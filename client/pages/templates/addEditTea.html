@@ -1,43 +1,62 @@
-<section class="add-edit-tea-dialog">
-    <div class="title-wrapper">
-        <h1>{{ctrl.title}}</h1>
-    </div>   
-    <div class="container" layout="column"> 
-        <md-input-container>
-            <label>Name</label>
-            <input ng-model="ctrl.tea.name">
-        </md-input-container>
-        <md-input-container>
-            <label>Type</label>
-            <md-select ng-model="ctrl.tea.teaType">
-                <md-option ng-repeat="type in ctrl.teaTypes" ng-value="type.name">
-                    {{type.name}}
-                </md-option>
-            </md-select>
-        </md-input-container>
-        <md-input-container>
-            <label>Price</label>
-            <input ng-model="ctrl.tea.price">
-        </md-input-container>
-        <md-input-container>
-            <label>Caffeine Level</label>
-            <md-select ng-model="ctrl.tea.caffeineLevel">
-                <md-option ng-repeat="caffeLevel in ctrl.caffeineLevels" ng-value="caffeLevel.key">
-                    {{caffeLevel.value}}
-                </md-option>
-            </md-select>
-        </md-input-container>
-        <md-input-container>
-            <label>Description</label>
-            <textarea ng-model="ctrl.tea.description"></textarea>
-        </md-input-container>
-        <md-input-container class="image-uploader-wrapper">
-            <span class="image-uploader-text">Add Picture</span>
-            <input type="file" class="image-uploader-button" ngf-select ng-model="ctrl.teaImage" name="file" accept="image/*" ngf-max-size="5MB" />
-            <p>{{ctrl.teaImage.name}}</p>
-        </md-input-container>
-        <div>
-            <md-button class="md-primary md-raised" ng-click="ctrl.save()">Add</md-button>
+<!-- <section class="add-edit-tea-dialog"> -->
+        <form name="teaForm" class="add-edit-tea-dialog"> 
+    <!-- <md-toolbar> -->
+        <div class="title-wrapper">
+            <h1>{{ctrl.title}}</h1>
+            <md-button class="close-dialog md-primary mdraised" ng-click="ctrl.close()">X</md-button>
         </div>
-    </div>
-</section>
+    <!-- </md-toolbar> -->
+    <md-dialog-content class="container">
+        
+            <md-input-container>
+                <label>Name</label>
+                <input type="text" name="teaName" required ng-model="ctrl.tea.name">
+                <div ng-messages="teaForm.teaName.$error">
+                    <div ng-message="required">The tea name is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Type</label>
+                <md-select name="teaType" ng-model="ctrl.tea.teaType" required>
+                    <md-option ng-repeat="type in ctrl.teaTypes" ng-value="type.name">
+                        {{type.name}}
+                    </md-option>
+                </md-select>
+                <div ng-messages="teaForm.teaType.$error">
+                    <div ng-message="required">The tea type is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Price</label>
+                <input type="number" min="1" name="teaPrice" ng-model="ctrl.tea.price" required>
+                <div ng-messages="teaForm.teaPrice.$error">
+                    <div ng-message="required">The tea price is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Caffeine Level</label>
+                <md-select name="caffeLevel" ng-model="ctrl.tea.caffeineLevel" required>
+                    <md-option ng-repeat="caffeLevel in ctrl.caffeineLevels" ng-value="caffeLevel.key">
+                        {{caffeLevel.value}}
+                    </md-option>
+                </md-select>
+                <div ng-messages="teaForm.caffeLevel.$error">
+                    <div ng-message="required">The tea caffeine level is required.</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Description</label>
+                <textarea ng-model="ctrl.tea.description"></textarea>
+            </md-input-container>
+            <md-input-container class="image-uploader-wrapper">
+                <span class="image-uploader-text">Add Picture</span>
+                <input type="file" class="image-uploader-button" ngf-select ng-model="ctrl.teaImage" required name="file" aria-label="add image" accept="image/*" ngf-max-size="5MB" />
+                <p>{{ctrl.teaImage.name}}</p>
+            </md-input-container>
+            <div>
+                <md-button class="md-primary md-raised" ng-disabled="teaForm.$invalid" ng-click="ctrl.save()">Save</md-button>
+            </div>
+        
+    </md-dialog-content>
+</form>
+<!-- </section> -->
