@@ -1,5 +1,3 @@
-// TODO: configure socket.io
-
 const http = require('http');
 const socketio = require('socket.io');
 let io = null;
