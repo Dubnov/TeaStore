@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const TeaTypeSchema = new Schema({
     name: {
         type:String,
-        trim: true
+        trim: true,
+        unique: true
     },
     creationDate: {
         type: Date,

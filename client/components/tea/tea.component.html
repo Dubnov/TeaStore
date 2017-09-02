@@ -1,7 +1,7 @@
 <div class="narrow col-md-6">
-	<img class="teaImg" ng-src="public/Images/{{ctrl.tea.image}}"/> 
+	<img class="teaImg" ng-src="{{ctrl.imageUrl}}"/> 
 	<h1> {{ctrl.tea.name}} </h1>
-	<p> Type: {{ctrl.tea.teaType.name}} </p>
+	<p> Type: {{ctrl.tea.teaType}} </p>
 	<p> Caffeine Level: {{ctrl.tea.caffeineLevel}} </p>
 	<p> {{ctrl.tea.description }} </p>
 	<h4> {{ctrl.tea.price | currency}} | 30g</h4>

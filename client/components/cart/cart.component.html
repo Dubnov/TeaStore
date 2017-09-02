@@ -10,7 +10,11 @@
 			<md-button class="md-primary" ng-click="ctrl.removeItem(tea)">Remove</md-button>
 		</tea-item>
 	</section>
-	<h3 class="cart-total" ng-if="ctrl.cartItems.length"> TOTAL: <span> {{ ctrl.totalUSDPrice | currency}} <span ng-if="ctrl.totalNISPrice">({{ctrl.totalNISPrice}}₪)</span></span></h3>
-	<md-button class="Checkout md-primary md-raised" ng-if="ctrl.cartItems.length">Checkout Now</md-button>
+	<h3 class="cart-total" ng-if="ctrl.cartItems.length"> TOTAL:
+		<span> {{ ctrl.totalUSDPrice | currency}}
+			<span ng-if="ctrl.totalNISPrice">({{ctrl.totalNISPrice}}₪)</span>
+		</span>
+		</h3>
+	<md-button class="Checkout md-primary md-raised" ng-click="ctrl.checkout($event)" ng-if="ctrl.cartItems.length">Checkout Now</md-button>
 	<h3 ng-if="!ctrl.cartItems.length">You have no items in your shopping cart.</h3>
 </div>

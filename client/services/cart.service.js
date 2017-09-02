@@ -1,5 +1,13 @@
-angular.module('teaStore').
-    factory('CartFactory', function cartFactory($http, $q){
+(function() {
+	'use strict';
+
+	angular
+		.module('teaStore')
+		.factory('CartFactory', ['$http', '$q', CartFactory]);
+
+	// CartFactory.$inject = ['$http', '$q'];
+		
+	function CartFactory($http, $q){
         return {            
             getCartItems: function(){
 				var items = [];
@@ -22,6 +30,9 @@ angular.module('teaStore').
 			removeItem: function(id){
 				sessionStorage.removeItem(id);
 			},
+			removeAllItems: function() {
+				sessionStorage.clear();
+			},
 			getCartAmount: function(){
 				return sessionStorage.length;
 			},
@@ -37,7 +48,7 @@ angular.module('teaStore').
 
 			},
 			convertToNIS: function (usdSum) {
-				deferred = $q.defer();
+				var deferred = $q.defer();
 
 				$http.get('http://api.fixer.io/latest?base=USD')
 				.then((response) => {
@@ -47,4 +58,6 @@ angular.module('teaStore').
 				return deferred.promise;
 			}
         }
-});
+	};
+
+})();

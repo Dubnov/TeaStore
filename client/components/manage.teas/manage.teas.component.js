@@ -13,9 +13,9 @@
             }
         });
 
-    ManageTeasController.$inject = ['$mdDialog', 'TeaFactory'];
+    ManageTeasController.$inject = ['$mdDialog', 'TeaFactory', '$timeout', 'socketService'];
 
-    function ManageTeasController($mdDialog, TeaFactory) {
+    function ManageTeasController($mdDialog, TeaFactory, $timeout, socketService) {
         var self = this;
 		
 		self.$onInit = function() {
@@ -57,7 +57,11 @@
 				}
 			}		
 			return false;
-		}
+        }
+        
+        socketService.on('teaTypeAdded', function(data) {
+			self.teaTypeList.push(data);
+		});
 
 		function initData(data) {
 			if (!data) {
@@ -70,7 +74,23 @@
 
 			return results;
         }
+
+        function getTeas() {
+            TeaFactory.getAllTeas().then(function(result) {
+                self.teas = initData(result.data);
+            });
+        }
         
+        self.deleteTea = function(teaId) {
+            TeaFactory.deleteTea(teaId).then(function() {
+                self.removedTea = teaId;
+
+                $timeout(function(){
+                    getTeas();
+                }, 600);
+            });
+        }
+
         self.openDialog = function(event, tea) {
             $mdDialog.show({
                 templateUrl: 'pages/templates/addEditTea.html',
@@ -85,13 +105,17 @@
                 controllerAs: 'ctrl',
                 controller: function(TeaFactory, tea, teaTypes, caffeineLevels, Upload) {
                     var self = this;
-                    self.tea = tea;
+                    var isEdit = false;
+                    self.tea = angular.copy(tea);
                     self.teaTypes = teaTypes;
                     self.caffeineLevels = caffeineLevels;
+                    self.teaImage = {};
 
                     self.title = 'Add Tea';
                     if (self.tea) {
+                        isEdit = true;
                         self.title = 'Edit Tea';
+                        self.teaImage.name = self.tea.image;
                     }
 
                     self.save = function() {
@@ -101,18 +125,31 @@
                         }).then(function(result) {
                             self.tea.image = result.data.filename;
 
-                            TeaFactory.addTea(self.tea).then(data => {
-                                console.log(data);
-                                $mdDialog.hide();
-                            }).catch(() => {
-                                console.log('failed to add the requested tea');
-                            });
+                            if (isEdit) {
+                                TeaFactory.updateTea(self.tea).then(function(result) {
+                                    $mdDialog.hide();
+                                    getTeas();
+                                }).catch(function(err) {
+                                    console.log('failed to update the requested tea', err);
+                                });
+                            } else {
+                                TeaFactory.addTea(self.tea).then(function() {
+                                    $mdDialog.hide();
+                                    getTeas();
+                                }).catch(function(err) {
+                                    console.log('failed to update the requested tea', err);
+                                });
+                            }
                         }).catch(function(err) {
                             console.log('failed to upload the requested image');
                         });
                     }
+
+                    self.close = function() {
+                        $mdDialog.hide();
+                    }
                 }
-            })
+            });
         }
     }
 })();

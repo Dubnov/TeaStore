@@ -30,9 +30,18 @@
     </aside>
     <div flex class="">        
         <div class="items" layout="row" layout-wrap>
-            <tea-item flex="33" ng-repeat="tea in (ctrl.filteredTeas = (ctrl.teas | filter:{name:ctrl.searchText} | filter:ctrl.filterByTeaType | filter:ctrl.filterByCaffeineLevel | orderBy:ctrl.orderbyfilter))"
-                      tea="tea" add-to-cart="ctrl.addToCart" show-price="ctrl.showPrice" manager="true">
-            </tea-item>
+            <div class="tea-item-wrapper" ng-class="{removed: ctrl.removedTea === tea._id}" flex="33" ng-repeat="tea in (ctrl.filteredTeas = (ctrl.teas | filter:{name:ctrl.searchText} | filter:ctrl.filterByTeaType | filter:ctrl.filterByCaffeineLevel | orderBy:ctrl.orderbyfilter))">                
+                <tea-item tea="tea" add-to-cart="false" show-price="ctrl.showPrice">
+                </tea-item>
+                <div layout="row" layout-align="center center">
+                    <md-button class="remove-tea-btn manage-tea-actions-btn md-fab md-mini md-ink-ripple" aria-label="remove tea" ng-click="ctrl.deleteTea(tea._id)">
+                        <md-icon md-svg-src="public/Images/delete.svg"></md-icon>
+                    </md-button>
+                    <md-button class="manage-tea-actions-btn edit-tea-btn md-fab md-mini md-ink-ripple" aria-label="edit tea" ng-click="ctrl.openDialog($event, tea)">
+                        <md-icon md-svg-src="public/Images/edit.svg"></md-icon>
+                    </md-button>
+                </div>                
+            </div>  
             <h4 class="searchResultErr" ng-if="!ctrl.filteredTeas.length">There are no matched items</h4>
         </div>
     </div>

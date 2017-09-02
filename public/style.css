@@ -1,15 +1,24 @@
 @font-face {
     font-family: basicFont;
-    src: url(Fonts/Quicksand_Book.otf);
+    src: url(fonts/Heebo-Regular.ttf);
 }
 *{
 	margin: 0;
-    font-family: basicFont,Monospace,sans-serif;
+    font-family: basicFont,Monospace,sans-serif !important;
 	font-size: 15px;
 }
 
 body {
 	background-color: #ffffff;
+	font-family: basicFont,Monospace,sans-serif;
+}
+
+md-dialog {
+	overflow: hidden;
+}
+
+md-dialog md-dialog-content:not([layout=row])>:first-child:not(.md-subheader) {
+	margin-top: 10px;
 }
 
 .header {
@@ -44,6 +53,7 @@ a, a:hover, a:focus{
     padding: 5px;
 }
 .tea-store-nav-bar li{
+	cursor: pointer;
 	display: inline-block;
 	list-style: none;
 	margin-right: 10px;
@@ -54,6 +64,11 @@ a, a:hover, a:focus{
 .tea-store-nav-bar li:hover {
 	background-color: #dadada;
 }
+
+.active {
+	font-weight: 800;
+}
+
 .tea-store-nav-bar li a{
 	text-decoration: none;
 	color: black;
@@ -87,9 +102,10 @@ a, a:hover, a:focus{
     width: 160px;
 }
 .teaItem{
-    display: block;
-    padding: 15px;
-    height: 350px;
+	display: block;
+	padding-top: 15px;
+	padding-bottom: 8px;
+    /* height: 350px; */
 	align-content: center;
 }
 
@@ -101,14 +117,43 @@ a, a:hover, a:focus{
 	text-align: center;
 }
 
-.teaItem .item .remove-tea-btn{
-	position: absolute;
-	left: 0;
-	top: 0;
-	background-color: transparent;
-	border: none;
-	font-size: 18px;
+.tea-item-wrapper {
+	margin-bottom: 30px;
+	opacity: 1;
+	position: relative;
+	transition: opacity ease-in-out 0.5s;
 }
+
+.tea-item-wrapper.removed {
+	opacity: 0;
+}
+
+.remove-tea-btn{
+	background-color: #ff9b9b !important; 
+	margin-right: 5px !important;
+}
+
+.edit-tea-btn {
+	background-color: #c9caf5 !important; 
+}
+
+.manage-tea-actions-btn {
+	/* background-color: #ffffff !important; */
+	box-shadow: unset !important;
+	display: inline-block;
+	padding: 0;
+	line-height: 20px;
+	margin: 0;	
+	border: 1px solid #000000;
+}
+
+.manage-tea-actions-btn img {
+	display: inline-block;
+	margin-top: 5px;
+	height: 30px;
+	width: 30px;
+}
+
 .narrow{
 	margin-top: 30px;
 	padding-left: 130px;
@@ -149,10 +194,13 @@ a, a:hover, a:focus{
 	right: -12px;
 	font-size: 10px;
 	font-weight: bolder;
-	padding: 2px 5px;
 	border-radius: 100%;
 	background: #EF423C;
 	color: white;
+	height: 20px;
+	width: 20px;
+	line-height: 20px;
+	text-align: center;
 }
 
 
@@ -230,16 +278,17 @@ a, a:hover, a:focus{
 }
 
 .add-edit-tea-dialog {
-	height: 100%;
-	/* padding: 10px 30px; */
 	width: 300px;
 }
 .add-edit-tea-dialog .container {
 	margin-left: 20px;
+	overflow-x: hidden;
 }
 .add-edit-tea-dialog .title-wrapper {
 	background-color: #3C42EE;
+	margin-bottom: 10px;
 	padding: 10px;
+	position: relative;
 }
 
 .add-edit-tea-dialog .title-wrapper h1 {
@@ -247,11 +296,25 @@ a, a:hover, a:focus{
 	margin-left: 20px;
 }
 
+.add-edit-tea-dialog .title-wrapper .close-dialog {
+	border-radius: 50%;
+	color: #fff;
+	font-size: 18px;
+	height: 30px;
+	line-height: 30px;
+	min-height: unset;
+	min-width: unset;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30px;
+}
+
 .add-edit-tea-dialog md-input-container {
-	height: 50px;
+	display: block;
 	min-height: 50px;
 	margin: 10px 0;
-	max-width: 200px;
+	padding-right: 20px;
 }
 
 .storeItem {
@@ -323,4 +386,13 @@ a, a:hover, a:focus{
 	left: 0;
 	top: 0;
 	opacity: 0;
+  }
+
+  .tea-types-list {
+	  margin: 0 auto;
+	  width: 600px;
+  }
+
+  .tea-types-list md-list {
+	  width: 310px;
   }

@@ -47,7 +47,9 @@ module.exports = (app) => {
         
     app.route('/api/teatypes/add').get(teasController.addTeaTypes);
 
-    app.route('/api/teatypes').get(teasController.getAllTeaTypes);
+    app.route('/api/teatypes')
+        .get(teasController.getAllTeaTypes)
+        .post(teasController.addTeaType);
 
     app.route('/api/stores').get(storesController.getAllStores);
     app.route('/api/stores/add').get(storesController.addStores);
