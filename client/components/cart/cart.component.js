@@ -59,6 +59,7 @@
 
             $mdDialog.show(confirm).then(function() {
                 CartFactory.removeAllItems();
+                $rootScope.cartAmount = CartFactory.getCartAmount();
                 self.cartItems = [];
                 $mdToast.show(
                     $mdToast.simple()
