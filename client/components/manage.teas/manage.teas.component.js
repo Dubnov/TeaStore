@@ -116,7 +116,7 @@
                     if (self.tea) {
                         isEdit = true;
                         self.title = 'Edit Tea';
-                        self.teaImage.name = self.tea.image;
+                        self.teaImage.name = self.tea.name + '.jpg';
                     }
 
                     self.save = function() {
