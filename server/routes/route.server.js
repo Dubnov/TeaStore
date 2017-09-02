@@ -1,6 +1,7 @@
 'use strict';
 
 const teasController = require('../controllers/teas.controller.server');
+const teaTypesController = require('../controllers/tea.types.controller.server');
 const storesController = require('../controllers/stores.controller.server');
 const path = require('path');
 const multer = require('multer');
@@ -44,12 +45,10 @@ module.exports = (app) => {
         .delete(teasController.deleteTea);
 
     app.route('/api/upload').post(upload.single('file'), teasController.uploadTeaImage);
-        
-    app.route('/api/teatypes/add').get(teasController.addTeaTypes);
 
     app.route('/api/teatypes')
-        .get(teasController.getAllTeaTypes)
-        .post(teasController.addTeaType);
+        .get(teaTypesController.getAllTeaTypes)
+        .post(teaTypesController.addTeaType);
 
     app.route('/api/stores').get(storesController.getAllStores);
     app.route('/api/stores/add').get(storesController.addStores);

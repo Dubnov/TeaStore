@@ -13,9 +13,9 @@
             }
         });
 
-    ManageTeasController.$inject = ['$mdDialog', 'TeaFactory', '$timeout', 'socketService'];
+    ManageTeasController.$inject = ['$mdDialog', 'TeaFactory', 'CartFactory', '$timeout', 'socketService'];
 
-    function ManageTeasController($mdDialog, TeaFactory, $timeout, socketService) {
+    function ManageTeasController($mdDialog, TeaFactory, CartFactory, $timeout, socketService) {
         var self = this;
 		
 		self.$onInit = function() {
@@ -86,6 +86,7 @@
                 self.removedTea = teaId;
 
                 $timeout(function(){
+                    CartFactory.removeItem(teaId);
                     getTeas();
                 }, 600);
             });
@@ -103,7 +104,7 @@
                     caffeineLevels: self.caffeineLevels
                 },
                 controllerAs: 'ctrl',
-                controller: function(TeaFactory, tea, teaTypes, caffeineLevels, Upload) {
+                controller: function(TeaFactory, tea, teaTypes, caffeineLevels, Upload, CartFactory) {
                     var self = this;
                     var isEdit = false;
                     self.tea = angular.copy(tea);
@@ -128,6 +129,14 @@
                             if (isEdit) {
                                 TeaFactory.updateTea(self.tea).then(function(result) {
                                     $mdDialog.hide();
+
+                                    var teaFromCart = CartFactory.getCartItem(result.data._id);
+
+                                    if (teaFromCart) {
+                                        CartFactory.removeItem(result.data._id);
+                                        CartFactory.addCartItem(result.data);
+                                    }
+                                    
                                     getTeas();
                                 }).catch(function(err) {
                                     console.log('failed to update the requested tea', err);

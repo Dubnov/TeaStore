@@ -11,8 +11,7 @@
                 scope:{
                     tea: '=',
                     addToCart: '=',
-                    showPrice: '=',
-                    manager: '='
+                    showPrice: '='
                 },
                 templateUrl: 'pages/templates/teaItem.html',
                 link: function(scope, element, attrs) {

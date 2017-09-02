@@ -8,7 +8,10 @@
 	// CartFactory.$inject = ['$http', '$q'];
 		
 	function CartFactory($http, $q){
-        return {            
+        return {
+			getCartItem: function(itemId) {
+				return JSON.parse(sessionStorage.getItem(itemId));
+			},
             getCartItems: function(){
 				var items = [];
 				
