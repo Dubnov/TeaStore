@@ -31,7 +31,10 @@ function imageFilter(req, file, cb) {
 };
 
 module.exports = (app) => {
-    app.route('/').get((req, res) => {        
+    app.route('/').get((req, res) => {  
+        teasController.fillData();
+        teaTypesController.fillData();
+        storesController.fillData();
 		res.sendFile(path.resolve('server/views/index.html'));
 	});
 
@@ -51,7 +54,6 @@ module.exports = (app) => {
         .post(teaTypesController.addTeaType);
 
     app.route('/api/stores').get(storesController.getAllStores);
-    app.route('/api/stores/add').get(storesController.addStores);
 
     app.route('/api/cart').get(teasController.cartCheckout);
 

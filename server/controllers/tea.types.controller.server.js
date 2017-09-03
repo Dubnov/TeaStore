@@ -22,5 +22,46 @@ module.exports.addTeaType = (req, res) => {
     }).catch(err => {
         console.log(err);
         res.status(500).json(err);        
-    });
+        });
+}
+
+module.exports.fillData = (req, res) => {
+    TeaType.find().then((results) => {
+        if (results.length == 0) {
+            const now = new Date();
+            let arr = [
+                {
+                    name: 'Green',
+                    creationDate: now,
+                    updateDate: now
+                },
+                {
+                    name: 'Black',
+                    creationDate: now,
+                    updateDate: now
+                },
+                {
+                    name: 'Herbal',
+                    creationDate: now,
+                    updateDate: now
+                },
+                {
+                    name: 'White',
+                    creationDate: now,
+                    updateDate: now
+                },
+                {
+                    name: 'Oolong',
+                    creationDate: now,
+                    updateDate: now
+                }
+            ];
+
+            TeaType.collection.insertMany(arr).then((d)=> {
+                console.log(d);
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+    })
 }
