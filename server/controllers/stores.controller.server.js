@@ -17,15 +17,20 @@ module.exports.getAllStores = (req, res) => {
     });
 };
 
+module.exports.fillData = (req, res) => {
+    Store.find().then((results) => {
+        if (results.length == 0) {
 
-module.exports.addStores = (req, res) => {
-    let arr = [
-        {name:"Best Tea Store", address:"מנחם בגין 12", city:"תל אביב", phone:"053-2491029"},
-        {name:"Tea For Life", address:"צהל 65", city:"קרית אונו", phone:"03-5433391"},
-        {name:"Not Just Tea", address:"גולומב 22", city:"ירושלים", phone:"054-8041900"}]
-    Store.collection.insertMany(arr).then((value) => {
-        console.log(value);
-    }).catch((err) => {
-        console.log(err);
+            let arr = [
+                {name:"Best Tea Store", address:"מנחם בגין 12", city:"תל אביב", phone:"053-2491029"},
+                {name:"Tea For Life", address:"צהל 65", city:"קרית אונו", phone:"03-5433391"},
+                {name:"Not Just Tea", address:"גולומב 22", city:"ירושלים", phone:"054-8041900"}];
+
+            Store.collection.insertMany(arr).then((d)=> {
+                console.log(d);
+            }).catch(err => {
+                console.log(err);
+            });
+        }
     })
 }
