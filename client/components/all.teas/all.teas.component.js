@@ -13,9 +13,9 @@
 			}
         });
 
-    TeasController.$inject = ['TeaFactory', 'socketService'];
+    TeasController.$inject = ['$scope', 'TeaFactory', 'socketService'];
 
-    function TeasController(TeaFactory, socketService) {
+    function TeasController($scope, TeaFactory, socketService) {
 		var self = this;
 		
 		self.$onInit = function() {
@@ -60,7 +60,9 @@
 		}
 
 		socketService.on('teaAdded', function(data) {
-			self.teas.push(data);
+			$scope.$apply(function() {
+				self.teas.push(data);
+			});
 		});
 
 		socketService.on('teaUpdated', function(data) {
@@ -68,11 +70,15 @@
 				return obj._id === data._id;
 			});
 
-			self.teas[index] = data;
+			$scope.$apply(function() {
+				self.teas[index] = data;
+			});
 		});
 
 		socketService.on('teaTypeAdded', function(data) {
-			self.teaTypeList.push(data);
+			$scope.$apply(function() {
+				self.teaTypeList.push(data);
+			});
 		});
 
 		socketService.on('teaRemoved', function(data) {
@@ -80,8 +86,10 @@
 				return obj._id === data._id;
 			});
 
-			self.teas.splice(index, 1);
-		})
+			$scope.$apply(function() {
+				self.teas.splice(index, 1);
+			});
+		});
 
 		function initData(data) {
 			if (!data) {
